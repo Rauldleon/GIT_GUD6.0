@@ -1,35 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package HDT6;
+﻿
 
-/**
- *
- * @author Didier
- */
+/* Universidad del valle de guatemala
+* Autores
+* Didier salazar 15487
+* Raul DE Leon	15112
+*Esteban Avalos 15059*/
+package HDT6;
+/*Clase principal del programa. controla las acciones que se realizaran */
+
+/* Importaciones de librerias*/
 import java.util.Scanner;
 import java.util.Set;
 
+/* main*/
 public class main{
 	public static void main(String args[]) {      
+		/*variables*/	
 		int op1 = 0;
 		int op2 = 0;
 		Scanner scan = new Scanner(System.in);
 		boolean bool = false;
 		boolean booli = false;
+		/* instanciacion de la factory*/
 		FactoryConjuntos fact = new FactoryConjuntos();
                 boolean ciclePrincipal=false;
 		while(ciclePrincipal==false){
 		while(bool == false){
+			/* SE IMPRIME LAS opciones*/
 			System.out.println("Bienvenido al programa de operaciones, elija entre los siguientes tipos de conjuntos: ");
 			System.out.println("1- HashSet");
 			System.out.println("2- TreeSet");
 			System.out.println("3- LinkedHashSet");
 			System.out.println("4- Salir del programa");
 			op1 = scan.nextInt();
-			
+			/* Verificacion de  la decision del usuario*/
+			/* se imprime el mensaje de que escogio*/
 			if(op1 == 1){
 				System.out.print("Escogió conjuntos tipo HashSet \n");
                                 bool=true;
@@ -52,7 +57,7 @@ public class main{
 			}
 				
 		}
-                //Se pregunta por el nombre del desarrollador
+/* se imprime para que el usuario ingrese el nombre */
       System.out.println("Ingrese a los desarrolladores: \n");
       boolean cicloSecundario = false;
       String desarrollador = "";
@@ -64,8 +69,8 @@ public class main{
       while(cicloSecundario == false){
           System.out.println("Ingrese el Nombre del Desarollador: ");
           desarrollador = scan.next();
-          //Dependiendo de que tipo de desarror es, se le asigna a cada uno de los conjuntos.
-          
+          /* se verifica que clase de desarrollador es y asi depende a cual se asigne*/
+          /* se peide que indique y que ingrese 1 o 2 como si o no para indicar el tipo*/
           valida = false;
           while( valida == false){
           System.out.println("¿Desarrolla en Java?");
@@ -146,34 +151,34 @@ public class main{
           } 
         }  
     
+/* Parte de impresion de los tipos de desarrolladores que el usuario ingreso, por los distintos conjuntos que se pueden crear*/
         System.out.println("******************************");
               Set conjuntoResultante1=conjuntoJava.getConjunto();
               Set conjuntoResultante2=conjuntoWeb.getConjunto();
               Set conjuntoResultante3=conjuntoCelulares.getConjunto();
               Set conjuntoMayor=conjuntoJava.conjuntoMasGrande(conjuntoResultante1, conjuntoResultante2, conjuntoResultante3);
               System.out.println("1. Los desarrolladores con experiencia en java, web y celulares son: ");
-              //1. Desarrolladores con experiencia en Java, web y celulares. (Es decir la intersección de los tres conjuntos).
+            
               System.out.println(conjuntoJava.interseccionTresConjuntos(conjuntoResultante1,conjuntoResultante2,conjuntoResultante3));
-              //2. Desarrolladores con experiencia en Java pero que no tengan experiencia en web.
+            
               System.out.println("2. Los desarrolladores con experiencia en Java pero que no tienen experiencia en aplicaciones web son: ");
               System.out.println(conjuntoJava.inclusionAB(conjuntoResultante2,conjuntoResultante3));
-              //3. Desarrolladores con experiencia en Web y Celulares (intersección de Web y Celuares), pero que no tengan experiencia en java.
+            
               System.out.println("3. Los desarrolladores con experiencia en Web y Celuares, pero que no tienen experiencia en java son: ");
               System.out.println(conjuntoJava.inclusionAB(conjuntoWeb.interseccionDosConjuntos(conjuntoResultante2,conjuntoResultante3), conjuntoResultante1));
-              //4. Desarrolladores con experiencia en Web o Celulares (unión de Web y Celuares), pero que no tengan experiencia en java.
               System.out.println("4. Los desarrolladores con experiencia en Web o Celuares, pero que no tienen experiencia en java son: ");
               System.out.println(conjuntoJava.inclusionAB(conjuntoWeb.unionDosConjuntos(conjuntoResultante2, conjuntoResultante3),conjuntoResultante1));
-              //5. Indicar SI o NO el conjunto de desarrolladores Java es un subconjunto de Desarrolladores Web
+             
               if (conjuntoJava.subConjuntoAmbos(conjuntoResultante1, conjuntoResultante3)==true){
                   System.out.println("5. El conjunto de desarrolladores java es un subconjunto de Desarrolladores Web.");
               }
               else{
                   System.out.println("5. El conjunto de desarrolladores java no es un subconjunto de Desarrolladores Web.");
               }
-              //El conjunto (Java, Web o Celulares) que tenga la cantidad más grande de desarrolladores, y los nombres de esos desarrolladores
+            
               System.out.println("6. El mas grande es: "+conjuntoJava.getConjuntoMayor() );
               System.out.println(conjuntoJava.conjuntoMasGrande(conjuntoResultante1, conjuntoResultante2, conjuntoResultante3));
-              //Del conjunto que tenga la mayor cantidad de desarrolladores, desplegar la lista de los nombres de sus integrantes enorden ascendente.
+           
                System.out.println("7. Lista de nombres de "+conjuntoJava.getConjuntoMayor()+" en orden ascendente: ");
               System.out.println(conjuntoJava.getStringConjunto(conjuntoWeb.conjuntoMasGrande(conjuntoResultante1, conjuntoResultante2, conjuntoResultante3)));
               System.out.println(conjuntoResultante1);

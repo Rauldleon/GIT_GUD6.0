@@ -1,41 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* Universidad del valle de guatemala
+* Autores
+* Didier salazar 15487
+* Raul DE Leon	15112
+*Esteban Avalos 15059*/
 package HDT6;
 
 /**
+ *Creacion de los distintos conjuntos de desarrolladores que el usuario ingresa
  *
- * @author Didier
  */
 import java.util.Set;
     
 public class Conjuntos {
    
-     // Se crean las variables a utilizar
+    /* variables*/
     private Set<String> conjuntoMenor;
     private Set<String> subconjuntoMenor;
     private String conjuntoMayor;
-    //Se crea la clase Factory
+    
+/* instanciacion de la factory*/
     FactoryConjuntos factory = new FactoryConjuntos(); 
     
-    //Constructor para inicizlizar los conjuntos y variables
+/* constructor de los conjuntos*/
     public Conjuntos(int menu){
         conjuntoMenor = factory.getTipoConjunto(menu);
          subconjuntoMenor=factory.getTipoConjunto(menu);
          conjuntoMayor="";
     }
-    //Metodo para agregar un elemento al conjunto
+/* metodo para ingrear los datosa a los conjuntos*/
     public void setTable(String elemento){
         conjuntoMenor.add(elemento);
         
     }
-    //Metodo para retornar el conjunto.
+/* se regresan los conjuntos y sus datos*/
     public Set<String> getConjunto(){
         return conjuntoMenor;
     }
-    //Metodo que devuelve la interseccion de tres conjuntos
+/* metodo que retorna la union de 3 conjuntos*/
     public Set<String> interseccionTresConjuntos(Set<String> conjunto1,Set<String> conjunto2,Set<String> conjunto3){
         subconjuntoMenor.clear();
         subconjuntoMenor.addAll(conjunto1);
@@ -44,27 +45,27 @@ public class Conjuntos {
         
         return subconjuntoMenor;
     }
-       //Metodo donde se ingresan dos conjuntos y se retorna todos los elementos de A que no estan contenidos en B
+/* metodo que retorna los desarrolladores que estan en dos conjuntos*/
     public Set<String> inclusionAB(Set<String> conjuntoA,Set<String> conjuntoB){
         subconjuntoMenor.clear();
         subconjuntoMenor.addAll(conjuntoA);
         subconjuntoMenor.removeAll(conjuntoB);
         return subconjuntoMenor;
     }
-    //Metodo donde se ingresan dos conjuntos y se retorna la interseccion de ambos.
+/* metodo que retorna la interseccion de dos conjuntos y retorna los desarrolladores que estan en el*/
     public Set<String> interseccionDosConjuntos(Set<String> conjunto1,Set<String> conjunto2){
         subconjuntoMenor.clear();
         subconjuntoMenor.addAll(conjunto1);
         subconjuntoMenor.retainAll(conjunto2);
         return subconjuntoMenor;
     }
-    //Metodo donde se ingresan dos conjuntos y se retorna un conjunto con la union de estos dos
+    /* retorna los desarrolladores que estan en dos conjuntos*/
     public Set<String> unionDosConjuntos(Set<String> conjunto1,Set<String> conjunto2){
         subconjuntoMenor.clear();
         subconjuntoMenor.addAll(conjunto1);
         return subconjuntoMenor;
     }
-    //Metodo para determinar si un conjunto esta contenido en otro.
+   /* metodo que retorna que si existe un conjunto en otro conjunto*/
     public boolean subConjuntoAmbos(Set<String> conjunto1,Set<String> conjunto2){
         subconjuntoMenor.clear();
         subconjuntoMenor.addAll(conjunto1);
@@ -76,7 +77,7 @@ public class Conjuntos {
             return false;
         }
     }
-    //Metodo que compara tres conjuntos y devuelve el conjunto mas grande.
+/* metodo para comparar el tamaño de conjuntos, retorna el mas grande*/
     public Set<String> conjuntoMasGrande(Set<String> conjunto1,Set<String> conjunto2,Set<String> conjunto3){
         subconjuntoMenor.clear();
         if (conjunto1.size()>=conjunto2.size()){
@@ -96,7 +97,7 @@ public class Conjuntos {
         }
 
     }
-    //Metodo para  retornar la variable string que contiene el nombre del conjunto mayor
+/* metodo que retorna en string los valores del conjunto mas grande*/
     public String getConjuntoMayor() {
          return conjuntoMayor;
      }
